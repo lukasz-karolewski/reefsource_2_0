@@ -1,0 +1,153 @@
+
+  body, li, a {
+    font-family: "Century Gothic", Avenir;
+    color: #384163;
+  }
+  .welcome {
+    width: 100vw;
+    height: 85vh;
+    background: #aed0e8;
+  }
+  .welcome-dashboard {
+    width: 100vw;
+    height: 33vh;
+    background: #aed0e8;
+  }
+
+  .land_sub {
+    position: relative;
+  }
+
+  .support {
+    width: 100vw;
+    height: 15vh;
+    background: #45BAB8;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .display-dashboard {
+    width: 100vw;
+    height: 67vh;
+    background: #e1e3e3;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .top-bar, 
+  .top-bar ul {
+      background-color: #aed0e8; 
+  }
+
+  .top-bar-left {
+    padding-left: 35px;
+    padding-top: 20px;
+  }
+
+  .menu-text {
+    font-size: 1.7rem;
+  }
+  .album_dashboard {
+    padding-left: 3.65rem;
+    font-size: 2rem;
+    font-weight: lighter;
+    padding-top: 1.8rem;
+  }
+  .menu-text-dashboard {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding: 0.7rem 1rem;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+  }
+  .menu-text-dashboard span {
+    font-weight: lighter;
+  }
+  .menu-text span {
+    font-weight: lighter;
+  }
+  .dropdown a {
+    font-weight: 550;
+    font-size: 1.2rem;
+    margin-left: 30px;
+  } 
+  .dashboard-a a {
+    font-weight: lighter;
+    font-size: 1rem;
+    margin-left: 30px;
+  }
+  .mega-menu {
+    padding-left: 40px;
+  }
+  .button {
+    background-color: transparent;
+    border-radius: 6.25em;
+    border: 2.5px solid #45BAB8;
+    color: #45BAB8;
+    font-weight: 600;
+  }
+  .button:hover, .button:focus{
+    background-color: #384163;
+    border: 2.5px solid transparent;
+  }
+  .contribute-button {
+    background-color: #45BAB8;
+    border-radius: 0.5em;
+    color: #ffe;
+    font-weight: 600;
+    font-size: 1.2rem;
+    float: center;
+    text-align: center;
+    position: relative;
+    margin-top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .contribute-button:hover, .contribute-button:focus{
+    background-color: #384163;
+  }
+  #description {
+    text-align: center;
+    position: relative;
+    float: center;
+    margin-top: 20vh;
+    font-size: 1.8em;
+    font-weight: 500;
+  }
+  #subdescription{
+    text-align: center;
+    position: relative;
+    float: center;
+    margin: 5px 10px;
+    font-size: 1.3rem;
+    font-weight: lighter;
+    font-style: italic;
+  }
+  .support img {
+    height: 40px;
+    float: left;
+    margin-right: 9vw;
+    position: relative;
+    top: 50%;
+    transform: translateY(70%);
+    /*line-height: 60px;*/
+  }
+  .support ul {
+    margin-bottom: 0;
+        display: inline-block;
+        text-align: center;
+        margin-left: 0; 
+  }
+  #modal_signup {
+    width: 30vw;
+    text-align: center;
+  }
+  #signup_title {
+    font-size: 1.5rem;
+    font-weight: lighter;
+  }
+
