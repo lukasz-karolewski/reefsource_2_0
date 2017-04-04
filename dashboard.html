@@ -9,7 +9,28 @@
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
 </head>
 <style type="text/css">
-
+	#add_album_sign {
+		background-color: #45BAB8;
+		font-size: 1.5rem;
+		font-weight: lighter;
+		color: #ffe;
+		position: relative;
+		left: 88%;
+		transform: translateY(-50%);
+	}
+	.naming {
+		width: 60%;
+		position:relative;
+		left: 50%;
+		top: 50%;
+		transform: translateX(-50%) translateY(70%);
+	}
+	#add_album label {
+		font-weight: bold;
+		font-size: 1.2rem;
+		margin-top: 8%;
+		position: relative;
+	}
 </style>
 <body>
 
@@ -33,8 +54,20 @@
 				<p id="albumname_dashboard">My Album</p>
 			</div>
 		</div>
+		<a id="add_album_sign" class="button" data-reveal-id="add_album">&#43;</a>
 	</div>
 </div>
+
+
+<div id="add_album" class="reveal-modal" data-reveal aria-labelledby="Add-Album" aria-hidden="true" role="dialog">
+	<form>
+		<label>Give Your Album A Name.</label>
+		<input type="text" name="a_name" placeholder="Give your album a name." class="naming">
+		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+	</form>
+</div>
+
+
 
 
 
