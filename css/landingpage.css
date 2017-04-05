@@ -10,7 +10,7 @@
   }
   .welcome-dashboard {
     width: 100vw;
-    height: 33vh;
+    height: 25vh;
     background: #aed0e8;
   }
 
@@ -83,6 +83,7 @@
   }
   .button {
     background-color: transparent;
+    font-family: "Century Gothic", Avenir;
     border-radius: 6.25em;
     border: 2.5px solid #45BAB8;
     color: #45BAB8;

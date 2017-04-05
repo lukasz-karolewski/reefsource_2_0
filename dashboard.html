@@ -18,12 +18,15 @@
 		left: 88%;
 		transform: translateY(-50%);
 	}
+	.input-group-button {
+		width: auto;
+	}
 	.naming {
 		width: 60%;
 		position:relative;
 		left: 50%;
-		top: 50%;
-		transform: translateX(-50%) translateY(70%);
+		transform: translateX(-50%);
+		border-radius: 0.8rem;
 	}
 	#add_album label {
 		font-weight: bold;
@@ -31,6 +34,41 @@
 		margin-top: 8%;
 		position: relative;
 	}
+	#drag_page {
+	    width: 80vw;
+	    height: 80vh;
+	    text-align: center;
+
+	}
+	.upload-icon {
+		padding-top: 10vh;
+		padding-bottom: 5vh;
+		cursor: pointer;
+	}
+	.upload-icon:hover, .upload-icon:focus {
+
+	} 
+	#label-for-choose {
+		cursor: pointer;
+		font-weight: 600;
+		font-size: 1.5rem;
+		display: inline;
+		color: #a3a3a3;
+	}
+	#label-for-choose:hover, #label-for-choose:focus {
+		color: #384163;
+	}
+	#label-for-drag {
+		font-size: 2.7rem;
+		font-weight: bold;
+		color: #a3a3a3;
+	}
+	#or {
+		font-size: 1.3rem;
+		font-weight: 200;
+	}
+
+
 </style>
 <body>
 
@@ -54,7 +92,7 @@
 				<p id="albumname_dashboard">My Album</p>
 			</div>
 		</div>
-		<a id="add_album_sign" class="button" data-reveal-id="add_album">&#43;</a>
+		<a id="add_album_sign" class="button" data-reveal-id="drag_page">&#43;</a>
 	</div>
 </div>
 
@@ -63,9 +101,28 @@
 	<form>
 		<label>Give Your Album A Name.</label>
 		<input type="text" name="a_name" placeholder="Give your album a name." class="naming">
+		<!-- <input type="submit" class="button" value="NEXT"> -->
+		<a class="drag_files button" data-reveal-id="drag_page">NEXT</a>
 		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 	</form>
 </div>
+
+
+
+
+<div id="drag_page" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
+	<form>
+		<!-- <label>Give Your Album A Name.</label> -->
+		<label for="upload_choose"><img src="img/upload_icon.png" class="upload-icon" /></label>
+
+		<label id="label-for-drag">Drop images<span id="or"> or</span><label for="upload_choose" id="label-for-choose"> upload images from local path.</label></label>
+
+		<input type="file" name="gopro_images" id="upload_choose" style="display: none;" multiple="">
+
+		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+	</form>
+</div>
+
 
 
 
