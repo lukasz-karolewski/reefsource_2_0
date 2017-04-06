@@ -2,9 +2,10 @@
 <html>
 <head>
 	<title>REEFSOURCE</title>
-	<link rel="stylesheet" type="text/css" href="css/foundation.css">
-	<link rel="stylesheet" type="text/css" href="css/landingpage.css">
-	<link rel="stylesheet" type="text/css" href="css/reveal.css">
+	<link rel="stylesheet" type="text/css" href="css/foundation.css" />
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/landingpage.css" />
+	<link rel="stylesheet" type="text/css" href="css/reveal.css" />
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
 </head>
@@ -124,6 +125,18 @@
 		border-radius: 0.7rem;
 		/*font-weight: bold;*/
 	}
+	#delete {
+		font-weight:bold;
+		color: darkred;
+		cursor: pointer;
+	}
+	#select-all {
+		font-weight: bold;
+	}
+	#delete:hover{
+		color: red;
+	}
+
 </style>
 
 <body>
@@ -213,9 +226,8 @@
 		<form>
 			<fieldset>
 				<div class="row">
-					<div class="small-2 columns"><input id="select" type="checkbox"><label for="select" >SELECT ALL</label></div>
-
-					<div class="small-2 columns" style="float: left;"><a>DELETE</a></div>
+					<div class="small-3 columns"><input id="select" type="checkbox"><label for="select" id="select-all">SELECT ALL<span id="item_count" style="font-weight: 400;color: #767676;"> (65 items)</span></label></div>
+					<div class="small-2 columns" style="float: left;"><i id="delete" style="font-size: 1.2rem;" class="fi-trash size-24"></i></div>
 				</div>
 				<div class="row img-section">
 					<div class="row">
