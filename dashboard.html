@@ -136,6 +136,19 @@
 	#delete:hover{
 		color: red;
 	}
+	.sub-menu-bar {
+		position: absolute;
+		left: 15%;
+		transform: translateX(-15%) translateY(-170%);
+	}
+	.sub-menu-bar a {
+		font-weight:bold;
+
+	}
+	.sub-menu-bar a:hover, .sub-menu-bar a:focus{
+		border-bottom: 1px solid #19A99D;
+		color: #19A99D;
+	}
 
 </style>
 
@@ -169,6 +182,15 @@
 			</div>
 		</div>
 		<a id="add_album_sign" class="button" data-reveal-id="add_album">&#43;</a>
+		<!--<div class="">-->
+			<div class="sub-menu-bar">
+				<ul class="menu">
+					<li><a href="#" class="is-active">ALL</a></li>
+					<li><a href="#">WITH RANKS</a></li>
+					<li><a href="#">IN PROCESS</a></li>
+				</ul>
+			</div>
+		<!--</div>-->
 	</div>
 </div>
 
@@ -226,8 +248,16 @@
 		<form>
 			<fieldset>
 				<div class="row">
-					<div class="small-3 columns"><input id="select" type="checkbox"><label for="select" id="select-all">SELECT ALL<span id="item_count" style="font-weight: 400;color: #767676;"> (65 items)</span></label></div>
-					<div class="small-2 columns" style="float: left;"><i id="delete" style="font-size: 1.2rem;" class="fi-trash size-24"></i></div>
+					<div class="small-3 columns" style="display:inline-block;text-align:right;">
+						<input id="select" type="checkbox" />
+						<label for="select" id="select-all">
+							SELECT ALL
+							<span id="item_count" style="font-weight: 400;color: #767676;">
+								(65 items)
+							</span>
+						</label>
+					</div>
+					<div class="small-2 columns" style="float: left;"><i id="delete" style="font-size: 1.2rem;float:left;" class="fi-trash size-24"></i></div>
 				</div>
 				<div class="row img-section">
 					<div class="row">
@@ -285,6 +315,7 @@
 
 
 <div class="display-dashboard">
+
 </div>
 
 
