@@ -28,7 +28,7 @@
   .display-dashboard {
     width: 100vw;
     height: 1000vh;   /*just for now*/
-    background: #eee;;
+    background: #eee;
     text-align: center;
     vertical-align: middle;
   }
