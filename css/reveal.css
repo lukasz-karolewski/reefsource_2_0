@@ -38,6 +38,8 @@ Reveal Modals
 .reveal-modal.large 		{ width: 600px; margin-left: -340px;}
 .reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
 
+
+
 .reveal-modal .close-reveal-modal {
 	font-size: 3rem;
 	line-height: .5;
@@ -51,7 +53,7 @@ Reveal Modals
 	text-shadow: 0 -1px 1px rbga(0,0,0,1);
 	font-weight: lighter;
 	cursor: pointer;
-	} 
+}
 /*
 	
 NOTES

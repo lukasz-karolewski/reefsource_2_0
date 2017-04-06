@@ -8,72 +8,102 @@
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
 </head>
+
 <style type="text/css">
-	#add_album_sign {
-		background-color: #45BAB8;
-		font-size: 1.5rem;
-		font-weight: lighter;
-		color: #ffe;
-		position: relative;
-		left: 88%;
-		transform: translateY(-50%);
-	}
-	.input-group-button {
-		width: auto;
-	}
-	.naming {
-		width: 60%;
-		position:relative;
-		left: 50%;
-		transform: translateX(-50%);
-		border-radius: 0.8rem;
-	}
-	#add_album label {
-		font-weight: bold;
-		font-size: 1.2rem;
-		margin-top: 8%;
-		position: relative;
-	}
-	#drag_page {
-	    width: 80vw;
-	    height: 80vh;
-	    text-align: center;
-
-	}
-	.upload-icon {
-		padding-top: 10vh;
-		padding-bottom: 5vh;
-		cursor: pointer;
-	}
-	.upload-icon:hover, .upload-icon:focus {
-
-	} 
-	#label-for-choose {
-		cursor: pointer;
-		font-weight: 600;
-		font-size: 1.5rem;
+	#dragging-box, #background-box {
+		background: none;
 		display: inline;
-		color: #a3a3a3;
+		position: relative;
+		height: 100%;
+		width: 100%;
 	}
-	#label-for-choose:hover, #label-for-choose:focus {
-		color: #384163;
+	#display_modal {
+		width: 90%;
+		height: 90%;
 	}
-	#label-for-drag {
-		font-size: 2.7rem;
+	.background-box {
+		position: absolute;
+		width: 95%;
+		height: 90%;
+		top: 5%;
+		left: 2.5%;
+		padding: 5px 5px 5px;
+		background: #deecf0;
+	}
+	.top-bar-right {
+		padding-right: 35px;
+		padding-top: 20px;
+	}
+	.img-section {
+		position:absolute;
+		width:95%;
+		height:86%;
+		top:7%;
+		left:4%;
+	}
+	#img-section {
+		padding-top: 1%;
+		overflow-y: scroll;
+		position:absolute;
+		height:100%;
+		background:white;
+		border-radius:0.5rem;
+		left:0px;
+	}
+	#user-name{
+		color: #45BAB8;
 		font-weight: bold;
-		color: #a3a3a3;
 	}
-	#or {
-		font-size: 1.3rem;
-		font-weight: 200;
+	input#select {
+		margin: 0 0 0rem;
 	}
-
-
+	#metadata-section {
+		position: absolute;
+		height: 100%;
+		background: white;
+		border:10px solid #deecf0;
+		border-left-width: 5px;
+		border-top-width:0px;
+		border-bottom-width:0px;
+		border-right-color: white;
+		border-radius: 0.95rem;
+		right:0px;
+	}
+	.drag-img-container {
+		border-radius: 0.5rem;
+		background: #dddddd;
+		opacity: 0.5;
+		border:3px solid white;
+		height: 25%;
+	}
+	.drag-img-container img{
+		height:100%;
+		width:100%;
+		padding:0 0 0 0;
+	}
+	.upload-button-drag {
+		position:absolute;
+		bottom: 0;
+		left:50%;
+		transform:translateX(-50%) translateY(50%);
+		width:80%;
+		height:auto;
+	}
+	.button-upload {
+		background: #45BAB8;
+		color: #fff;
+		width: inherit;
+		font-size:1rem;
+		/*font-weight: bold;*/
+	}
 </style>
+
 <body>
 
 
-<div class="sticky-container" data-sticky-container style="height: 33vh;">
+
+
+<div class="sticky-container" data-sticky-container style="height: 25vh;">
 	<div style="width: 100%; margin-top: 0em; top: 0px; bottom: auto; left: 0px;" class="sticky is-stuck is-at-top" data-sticky="8qoug4-sticky" data-options="marginTop:0;anchor:stickhere;" data-resize="k03y85-sticky">
 		<div class="welcome-dashboard">
 			
@@ -87,17 +117,27 @@
 			      		<li><a href="#">CONTACT</a></li>
 			    	</ul>
 			  	</div>
+				<div class="top-bar-right">
+					<ul class="dropdown menu dashboard-a" data-dropdown-menu>
+						<li class="mega-menu"><a data-toggle="mega-menu" href="#" id="user-name">USER NAME</a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="album_dashboard">
 				<p id="albumname_dashboard">My Album</p>
 			</div>
 		</div>
-		<a id="add_album_sign" class="button" data-reveal-id="drag_page">&#43;</a>
+		<a id="add_album_sign" class="button" data-reveal-id="add_album">&#43;</a>
 	</div>
 </div>
 
 
-<div id="add_album" class="reveal-modal" data-reveal aria-labelledby="Add-Album" aria-hidden="true" role="dialog">
+
+
+
+
+
+<div id="add_album" class="reveal-modal" data-reveal aria-labelledby="Add-Album" aria-hidden="true" role="dialog" >
 	<form>
 		<label>Give Your Album A Name.</label>
 		<input type="text" name="a_name" placeholder="Give your album a name." class="naming">
@@ -110,35 +150,144 @@
 
 
 
+
+
+
+
 <div id="drag_page" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
-	<form>
-		<!-- <label>Give Your Album A Name.</label> -->
-		<label for="upload_choose"><img src="img/upload_icon.png" class="upload-icon" /></label>
+	<div id="dragging-box">
+		<form>
+			<fieldset>
+				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="3000000" />
 
-		<label id="label-for-drag">Drop images<span id="or"> or</span><label for="upload_choose" id="label-for-choose"> upload images from local path.</label></label>
-
-		<input type="file" name="gopro_images" id="upload_choose" style="display: none;" multiple="">
-
-		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
-	</form>
+				<label for="upload_choose"><img src="img/upload_icon.png" class="upload-icon" /></label>
+				<label id="label-for-drag">Drop images<span id="or"> or</span><label for="upload_choose" id="label-for-choose"> upload images from local path.</label></label>
+				<input type="file" name="gopro_images" id="upload_choose" style="display: none;" multiple="">
+				<!--This is used for testing.-->
+				<p id="message"></p>
+				<a class="button" data-reveal-id="display_modal">OK</a>
+			</fieldset>
+		</form>
+	</div>
+	<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 </div>
 
 
 
+
+
+
+
+
+<div id="display_modal" class="reveal-modal" data-reveal aria-labelledby="display-drags" aria-hidden="true" role="dialog">
+
+	<div class="row background-box">
+		<form>
+			<fieldset>
+				<div class="row">
+					<div class="small-2 columns"><input id="select" type="checkbox"><label for="select" >SELECT ALL</label></div>
+
+					<div class="small-2 columns" style="float: left;"><a>DELETE</a></div>
+				</div>
+				<div class="row img-section">
+					<div class="row">
+						<div class="large-9 columns" id="img-section">
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
+							</div>
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
+							</div>
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
+							</div>
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
+							</div>
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
+							</div>
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/upload_icon.png">
+							</div>
+							<div class="medium-2 columns drag-img-container">
+								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
+							</div>
+
+						</div>
+					</div>
+
+					<div class="large-3 columns" id="metadata-section">
+						metadata part
+					</div>
+				</div>
+				<div class="row upload-button-drag">
+					<a class="button button-upload" type="submit">UPLOAD</a>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+</div>
 
 
 
 <div class="display-dashboard">
-	
 </div>
 
 
 <div id="destroy">
-
 </div>
 
 
 
+<script type="text/javascript">
+
+	(function () {
+		var dropzone = document.getElementById("dragging-box");
+
+		dropzone.ondrop = function (e) {
+			e.preventDefault();
+            document.getElementById("dragging-box").style.background = "none";
+            document.getElementById("dragging-box").style.opacity = "1";
+            if (e.dataTransfer.files.length >= 1) {
+                var files = e.target.files || e.dataTransfer.files;
+                for (var i = 0, f; f = files[i]; i++) {
+                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
+                    var m = document.getElementById("message");
+                    m.innerHTML = msg + m.innerHTML;
+                }
+			}
+        }
+
+		dropzone.ondragover = function () {
+			document.getElementById("dragging-box").style.background = "#bfbebb";
+            document.getElementById("dragging-box").style.opacity = "0.5";
+			return false;
+        }
+        dropzone.ondragleave = function () {
+            document.getElementById("dragging-box").style.background = "none";
+            document.getElementById("dragging-box").style.opacity = "1";
+			return false;
+        }
+        var selectFiles = document.getElementById("upload_choose");
+		selectFiles.onchange = function (e) {
+            e.preventDefault();
+            if (e.target.files.length >= 1) {
+                var files = e.target.files || e.dataTransfer.files;
+                for (var i = 0, f; f = files[i]; i++) {
+                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
+                    var m = document.getElementById("message");
+                    m.innerHTML = msg + m.innerHTML;
+                }
+            }
+        }
+    }());
+</script>
+<script type="text/javascript">
+
+</script>
+<script type="text/javascript" src="js/vendor/foundation.js"></script>
 <script type="text/javascript" src="js/vendor/foundation.min.js"></script>
 </body>
 </html>

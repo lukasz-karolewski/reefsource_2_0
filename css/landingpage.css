@@ -28,7 +28,7 @@
   .display-dashboard {
     width: 100vw;
     height: 1000vh;   /*just for now*/
-    background: #e1e3e3;
+    background: #eee;;
     text-align: center;
     vertical-align: middle;
   }
@@ -156,5 +156,64 @@
     height: 50vh;
     text-align: center;
 
+  }
+  #add_album_sign {
+    background-color: #45BAB8;
+    font-size: 1.5rem;
+    font-weight: lighter;
+    color: #ffe;
+    position: relative;
+    left: 89vw;
+    transform: translateY(-50%);
+  }
+  .input-group-button {
+    width: auto;
+  }
+  .naming {
+    width: 60%;
+    position:relative;
+    left: 50%;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    transform: translateX(-50%);
+    border-radius: 0.8rem;
+  }
+  #add_album label {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 8%;
+    position: relative;
+  }
+  #drag_page, #display_modal {
+      width: 80vw;
+      height: 80vh;
+      text-align: center;
+  }
+  .upload-icon {
+    padding-top: 10vh;
+    padding-bottom: 5vh;
+    cursor: pointer;
+  }
+  .upload-icon:hover, .upload-icon:focus {
+
+  } 
+  #label-for-choose {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.5rem;
+    display: inline;
+    color: #a3a3a3;
+  }
+  #label-for-choose:hover, #label-for-choose:focus {
+    color: #384163;
+  }
+  #label-for-drag {
+    font-size: 2.7rem;
+    font-weight: bold;
+    color: #a3a3a3;
+  }
+  #or {
+    font-size: 1.3rem;
+    font-weight: 200;
   }
 
