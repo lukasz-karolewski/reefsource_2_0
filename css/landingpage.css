@@ -21,7 +21,7 @@
   .support {
     width: 100vw;
     height: 15vh;
-    background: #45BAB8;
+    background: #19A99D;
     text-align: center;
     vertical-align: middle;
   }
@@ -85,8 +85,8 @@
     background-color: transparent;
     font-family: "Century Gothic", Avenir;
     border-radius: 6.25em;
-    border: 2.5px solid #45BAB8;
-    color: #45BAB8;
+    border: 2.5px solid #19A99D;
+    color: #19A99D;
     font-weight: 600;
   }
   .button:hover, .button:focus{
@@ -94,7 +94,7 @@
     border: 2.5px solid transparent;
   }
   .contribute-button {
-    background-color: #45BAB8;
+    background-color: #19A99D;
     border-radius: 0.5em;
     color: #ffe;
     font-weight: 600;
@@ -158,7 +158,7 @@
 
   }
   #add_album_sign {
-    background-color: #45BAB8;
+    background-color: #19A99D;
     font-size: 1.5rem;
     font-weight: lighter;
     color: #ffe;

@@ -44,7 +44,7 @@ Reveal Modals
 	font-size: 3rem;
 	line-height: .5;
 	position: absolute;
-	background-color: #45BAB8;
+	background-color: #19A99D;
 	border-radius: 50%;
 	padding: 5px 3px 5px 3px;
 	top: -20px;
@@ -54,6 +54,12 @@ Reveal Modals
 	font-weight: lighter;
 	cursor: pointer;
 }
+
+
+.reveal-modal .close-reveal-modal:hover {
+	background-color: #384163;
+}
+
 /*
 	
 NOTES
