@@ -8,6 +8,17 @@
 	<link rel="stylesheet" type="text/css" href="css/reveal.css" />
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
+
+
+	<script>
+        // terrificjs bootstrap
+		$(document).ready(function() {
+                //pase the value
+			document.getElementById('user-name').innerHTML = 'Hi, ' + localStorage.getItem('user_name');
+		});
+	</script>
+
+
 </head>
 
 <style type="text/css">
@@ -177,6 +188,25 @@
 
 <body>
 
+
+
+
+
+
+<!--<script>-->
+	<!---->
+	<!---->
+	<!---->
+	<!---->
+	<!---->
+	<!---->
+	<!---->
+<!--//    function loadData() {-->
+<!--//        var account_name = localStorage.getItem('user_name');-->
+<!--//        document.getElementById('user-name').innerText = account_name;-->
+<!--//        console.log(account_name);-->
+<!--//    }-->
+<!--</script>-->
 
 
 
@@ -542,9 +572,6 @@
             }
         }
     }());
-</script>
-<script type="text/javascript">
-
 </script>
 <script type="text/javascript" src="js/vendor/foundation.js"></script>
 <script type="text/javascript" src="js/vendor/foundation.min.js"></script>
