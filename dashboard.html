@@ -7,23 +7,79 @@
 	<link rel="stylesheet" type="text/css" href="css/landingpage.css" />
 	<link rel="stylesheet" type="text/css" href="css/dashboard.css" />
 	<link rel="stylesheet" type="text/css" href="css/reveal.css" />
+
+	<link rel="stylesheet" type="text/css" href="css/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css">
+
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
 
-
 	<script>
-        // terrificjs bootstrap
 		$(document).ready(function() {
-                //pase the value
 			document.getElementById('user-name').innerHTML = 'Hi, ' + localStorage.getItem('user_name');
 		});
 	</script>
 
-
 </head>
 
+<style>
+	/*#album_gallery.reveal-modal {*/
+		/*padding: 30px 40px 34px;*/
+	/*}*/
+	#album_gallery {
+		width: 60vw;
+		padding-bottom: 40%;
+		background: gold;
+
+	}
+	.card-section {
+		text-align: left;
+	}
+	.img-style-dashboard {
+		position: relative;
+		max-height: 100%;
+		object-fit: contain;
+	}
+	.album_name_style {
+		line-height: 1.0;
+		margin-bottom:10px;
+		color: #8a8a8a;
+		font-weight: bolder;
+	}
+	.album_date_style {
+		line-height: 1.0;
+		font-size: 0.8rem;
+		color: #8a8a8a;
+	}
+	.card {
+		cursor: pointer;
+		box-shadow: 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.2), 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.19);
+	}
+	.card:hover{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
+	}
+	.slider {
+		width: 100%;
+		position:relative;
+	}
+
+	.slick-slide {
+		margin: 0px 20px;
+	}
+
+	.slick-slide img {
+		width: 100%;
+	}
+
+	.slick-prev:before,
+	.slick-next:before {
+		color: black;
+	}
+</style>
 
 <body>
+
+
 
 
 <div class="sticky-container" data-sticky-container style="height: 25vh;">
@@ -73,16 +129,10 @@
 		<label style="color: gray">Give Your Album A Name.</label>
 		<input type="text" name="a_name" placeholder="Give your album a name." class="naming">
 		<!-- <input type="submit" class="button" value="NEXT"> -->
-		<a class="drag_files button" data-reveal-id="drag_page">NEXT</a>
+		<a class="drag_files button" data-reveal-id="drag_page" id="first-second">NEXT</a>
 		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 	</form>
 </div>
-
-
-
-
-
-
 
 
 <div id="drag_page" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
@@ -96,7 +146,7 @@
 				<input type="file" name="gopro_images" id="upload_choose" style="display: none;" multiple="">
 				<!--This is used for testing.-->
 				<p id="message"></p>
-				<a class="button" data-reveal-id="display_modal">OK</a>
+				<a href="#" class="button" data-reveal-id="display_modal" id="second-third">OK</a>
 			</fieldset>
 		</form>
 	</div>
@@ -298,7 +348,7 @@
 					</div>
 				</div>
 				<div class="row upload-button-drag">
-					<a class="button button-upload" type="submit">UPLOAD</a>
+					<a class="button button-upload" type="submit" id="upload-button">UPLOAD</a>
 				</div>
 			</fieldset>
 		</form>
@@ -307,33 +357,96 @@
 </div>
 
 
+<div id="album_gallery" class="reveal-modal" data-reveal aria-labelledby="album_gallery" aria-hidden="true" role="dialog" >
+	<form>
+		<div style="position:absolute;width: 100%; height: 100%; text-align: center; background: gold; transform: translateX(-40px) translateY(-30px);">
+
+			<section class="photo_show slider">
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=1">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=2">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=3">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=4">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=5">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=6">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=7">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=8">
+				</div>
+				<div>
+					<img style="position: relative; width: 100%;height: 100%;"src="http://placehold.it/350x300?text=9">
+				</div>
+			</section>
+		</div>
+
+		<!--<label style="color: gray">Give Your Album A Name.</label>-->
+		<!--<input type="text" name="a_name" placeholder="Give your album a name." class="naming">-->
+		<!--&lt;!&ndash; <input type="submit" class="button" value="NEXT"> &ndash;&gt;-->
+		<!--<a class="drag_files button" data-reveal-id="drag_page" id="first-second">NEXT</a>-->
+		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+	</form>
+</div>
+
 
 <div class="display-dashboard" style="padding:10% 10% 10% 10%;">
 	<div class="row small-up-2 medium-up-3">
+		<div class="column" >
+			<a data-reveal-id="album_gallery">
+			<div class="card">
+				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
+				<div class="card-section">
+					<p class="album_name_style">ALBUM NAME</p>
+					<p class="album_date_style">date</p>
+				</div>
+			</div>
+			</a>
+		</div>
 		<div class="column">
 			<div class="card">
-				<img src="img/columbia-logo.png">
+				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
 				<div class="card-section">
-					<h4>This is a card.</h4>
-					<p>It has an easy to override visual style, and is appropriately subdued.</p>
+					<p class="album_name_style">ALBUM NAME</p>
+					<p class="album_date_style">date</p>
 				</div>
 			</div>
 		</div>
 		<div class="column">
 			<div class="card">
-				<img src="img/columbia-logo.png">
+				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
 				<div class="card-section">
-					<h4>This is a card.</h4>
-					<p>It has an easy to override visual style, and is appropriately subdued.</p>
+					<p class="album_name_style">ALBUM NAME</p>
+					<p class="album_date_style">date</p>
 				</div>
 			</div>
 		</div>
 		<div class="column">
 			<div class="card">
-				<img src="img/columbia-logo.png">
+				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
 				<div class="card-section">
-					<h4>This is a card.</h4>
-					<p>It has an easy to override visual style, and is appropriately subdued.</p>
+					<p class="album_name_style">ALBUM NAME</p>
+					<p class="album_date_style">date</p>
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<div class="card">
+				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
+				<div class="card-section">
+					<p class="album_name_style">ALBUM NAME</p>
+					<p class="album_date_style">date</p>
 				</div>
 			</div>
 		</div>
@@ -344,7 +457,10 @@
 <div id="destroy">
 </div>
 
-
+<script type="text/javascript" src="js/vendor/foundation.js"></script>
+<script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript">
 
@@ -389,7 +505,25 @@
         }
     }());
 </script>
-<script type="text/javascript" src="js/vendor/foundation.js"></script>
-<script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+
+<script>
+    var upload_btn = document.getElementById("upload-button");
+    upload_btn.onclick = function () {
+        window.location.href = "dashboard.html";
+    }
+</script>
+<script type="text/javascript">
+    $(document).on('ready', function() {
+
+        $(".photo_show").slick({
+            dots: true,
+            infinite: true,
+            centerMode: true,
+            slidesToShow: 1,
+            slidesToScroll: 3
+        });
+
+    });
+</script>
 </body>
 </html>

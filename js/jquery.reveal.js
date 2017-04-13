@@ -25,7 +25,6 @@
 		// if (e.currentTarget.attr('data-reveal-id').nodeValue == "drag_page") {
 
 		// }
-
         var modalLocation = $(this).attr('data-reveal-id');
         $('#'+modalLocation).reveal($(this).data());
     });
@@ -133,7 +132,7 @@
 			 Open and add Closing Listeners
 			 ----------------------------*/
             //Open Modal Immediately
-            modal.trigger('reveal:open')
+            modal.trigger('reveal:open');
 
             //Close Modal Listeners
             var closeButton = $('.' + options.dismissmodalclass).bind('click.modalEvent', function () {
@@ -143,6 +142,7 @@
             if(options.closeonbackgroundclick) {
                 modalBG.css({"cursor":"pointer"})
                 modalBG.bind('click.modalEvent', function () {
+
                     modal.trigger('reveal:close')
                 });
             }
