@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css">
 
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+
 	<script type="text/javascript" src="js/jquery.reveal.js"></script>
 
 	<script>
@@ -20,14 +21,26 @@
 			document.getElementById('user-name').innerHTML = 'Hi, ' + localStorage.getItem('user_name');
 		});
 	</script>
-
 </head>
 
 <style>
+	.img-in-album {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.img-star {
+		display: block;
+		background:rgba(0, 0, 0, 0.2);
+		font-size: 2rem;
+		color:rgba(120,206,188,1);
+		transform:translateY(-100%);
+		text-align:center;
+	}
 	#album_gallery {
-		width: 60vw;
-		padding-bottom: 40%;
-		background: gold;
+		width: 70vw;
+		padding-bottom: 38%;
+		background: #E6E6E6;
 
 	}
 	.card-section {
@@ -109,14 +122,13 @@
 		<!--<div class="">-->
 		<div class="sub-menu-bar">
 			<ul class="menu">
-				<li><a href="#" class="is-active">ALL</a></li>
-				<li><a href="#">WITH RANKS</a></li>
-				<li><a href="#">IN PROCESS</a></li>
+				<li><a id="all_sign" href="#" class="is-active">ALL</a></li>
+				<!--<li><a id="ranks_sign" href="#">WITH RANKS</a></li>-->
+				<!--<li><a id="process_sign" href="#">IN PROCESS</a></li>-->
 			</ul>
 		</div>
 	</div>
 </div>
-
 
 
 
@@ -131,7 +143,7 @@
 </div>
 
 
-<div id="drag_page" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
+<div id="drag_page" style="z-index: 102;" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
 	<div id="dragging-box">
 		<form>
 			<fieldset>
@@ -156,7 +168,7 @@
 
 
 
-<div id="display_modal" class="reveal-modal" data-reveal aria-labelledby="display-drags" aria-hidden="true" role="dialog">
+<div id="display_modal" style="z-index: 103;" class="reveal-modal" data-reveal aria-labelledby="display-drags" aria-hidden="true" role="dialog">
 
 	<div class="row background-box">
 		<form>
@@ -355,43 +367,20 @@
 
 <div id="album_gallery" class="reveal-modal" data-reveal aria-labelledby="album_gallery" aria-hidden="true" role="dialog" >
 	<form>
-		<div style="position:absolute;width: 100%; height: 100%; text-align: center; background: gold; transform: translateX(-40px) translateY(-30px);">
-
-			<section class="photo_show slider">
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=1">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=2">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=3">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=4">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=5">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=6">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=7">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;" src="http://placehold.it/350x300?text=8">
-				</div>
-				<div>
-					<img style="position: relative; width: 100%;height: 100%;"src="http://placehold.it/350x300?text=9">
-				</div>
-			</section>
-		</div>
-
-		<!--<label style="color: gray">Give Your Album A Name.</label>-->
-		<!--<input type="text" name="a_name" placeholder="Give your album a name." class="naming">-->
-		<!--&lt;!&ndash; <input type="submit" class="button" value="NEXT"> &ndash;&gt;-->
-		<!--<a class="drag_files button" data-reveal-id="drag_page" id="first-second">NEXT</a>-->
+		<section class="photo_show slider">
+			<div>
+				<img class="img-in-album" style="" src="img/GOPR0078_preview.jpg">
+				<span class="img-star">&#x2605;</span>
+			</div>
+			<div>
+				<img class="img-in-album" style="" src="img/GOPR0078_preview.jpg">
+				<span class="img-star">&#x2605;</span>
+			</div>
+			<div>
+				<img class="img-in-album" style="" src="img/GOPR0078_preview.jpg">
+				<span class="img-star">&#x2605;</span>
+			</div>
+		</section>
 		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 	</form>
 </div>
@@ -409,42 +398,6 @@
 				</div>
 			</div>
 			</a>
-		</div>
-		<div class="column">
-			<div class="card">
-				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
-				<div class="card-section">
-					<p class="album_name_style">ALBUM NAME</p>
-					<p class="album_date_style">date</p>
-				</div>
-			</div>
-		</div>
-		<div class="column">
-			<div class="card">
-				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
-				<div class="card-section">
-					<p class="album_name_style">ALBUM NAME</p>
-					<p class="album_date_style">date</p>
-				</div>
-			</div>
-		</div>
-		<div class="column">
-			<div class="card">
-				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
-				<div class="card-section">
-					<p class="album_name_style">ALBUM NAME</p>
-					<p class="album_date_style">date</p>
-				</div>
-			</div>
-		</div>
-		<div class="column">
-			<div class="card">
-				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
-				<div class="card-section">
-					<p class="album_name_style">ALBUM NAME</p>
-					<p class="album_date_style">date</p>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
@@ -501,6 +454,26 @@
         }
     }());
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
     var upload_btn = document.getElementById("upload-button");
