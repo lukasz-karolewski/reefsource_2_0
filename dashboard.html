@@ -252,7 +252,7 @@
 	(function () {
         document.getElementById("add_album_form").addEventListener("change", function() {
             localStorage.setItem('t_name', $("#album_name_id").val());
-            console.log($("#album_name_id").val());
+            $('input[name="album_name_"]').val(localStorage.getItem('t_name'));
             console.log($("#album_name_id").val());
         });
 
