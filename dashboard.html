@@ -96,7 +96,7 @@
 <div id="add_album" class="reveal-modal" data-reveal aria-labelledby="Add-Album" aria-hidden="true" role="dialog" >
 	<form action="" id="add_album_form">
 		<label style="color: gray">Give Your Album A Name.</label>
-		<input id="album_name_id" type="text" name="a_name" placeholder="Give your album a name." class="naming">
+		<input id="album_name_id" type="text" name="a_name" placeholder="Give your album a name." class="naming" required>
 		<!-- <input type="submit" class="button" value="NEXT"> -->
 		<a class="drag_files button" data-reveal-id="drag_page" id="first-second" type="submit">NEXT</a>
 		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
@@ -139,169 +139,30 @@
 		<form>
 			<fieldset>
 				<div class="row">
-					<div class="small-3 columns" style="display:inline-block;text-align:right;">
-						<input id="select" type="checkbox" />
-						<label for="select" id="select-all">
-							SELECT ALL
-							<span id="item_count" style="font-weight: 400;color: #767676;">
-								(65 items)
-							</span>
-						</label>
-					</div>
-					<div class="small-2 columns" style="float: left;"><i id="delete" style="font-size: 1.2rem;float:left;" class="fi-trash size-24"></i></div>
+					<!--Will add in this part in the next version.-->
+					<!--<div class="small-3 columns" style="display:inline-block;text-align:right;">-->
+						<!--<input id="select" type="checkbox" />-->
+						<!--<label for="select" id="select-all">-->
+							<!--SELECT ALL-->
+							<!--<span id="item_count" style="font-weight: 400;color: #767676;">-->
+								<!--(65 items)-->
+							<!--</span>-->
+						<!--</label>-->
+					<!--</div>-->
+					<!--<div class="small-2 columns" style="float: left;"><i id="delete" style="font-size: 1.2rem;float:left;" class="fi-trash size-24"></i></div>-->
 				</div>
 				<div class="row img-section">
 					<div class="row">
-						<div class="large-9 columns" id="img-section">
+						<div class="large-9 columns" id="img-section" style="text-align: left;">
+							<!--Image Example.-->
 
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-								<!--<input id="select_1" type="checkbox" style="border:1px solid #19A99D; position: absolute;top: 0px;lef">-->
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/columbia-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/brown-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/upload_icon.png">
-							</div>
-							<div class="medium-2 columns drag-img-container">
-								<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">
-							</div>
+							<!--<div class="medium-2 columns drag-img-container" style="float: left;">-->
+								<!--<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">-->
+								<!--&lt;!&ndash;<input id="select_1" type="checkbox" style="border:1px solid #19A99D; position: absolute;top: 0px;lef">&ndash;&gt;-->
+							<!--</div>-->
+							<!--<div class="medium-2 columns drag-img-container" style="float: left;">-->
+								<!--<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">-->
+							<!--</div>-->
 						</div>
 					</div>
 
@@ -376,8 +237,11 @@
 </div>
 
 
-
+<!--Wil add this line in the future. Do not FORGET.-->
 <!--<script type="text/javascript" src="js/upload_process.js" ></script>-->
+
+
+
 <script type="text/javascript" src="js/vendor/foundation.js"></script>
 <!--<script type="text/javascript" src="js/vendor/foundation.min.js"></script>-->
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
@@ -389,6 +253,7 @@
         document.getElementById("add_album_form").addEventListener("change", function() {
             localStorage.setItem('t_name', $("#album_name_id").val());
             console.log($("#album_name_id").val());
+            console.log($("#album_name_id").val());
         });
 
 		var dropzone = document.getElementById("dragging-box");
@@ -397,17 +262,30 @@
 			e.preventDefault();
             document.getElementById("dragging-box").style.background = "none";
             document.getElementById("dragging-box").style.opacity = "1";
-            console.log(e);
             if (e.dataTransfer.files.length >= 0) {
 //                console.log(emozFullPath);
                 var files = e.target.files || e.dataTransfer.files;
-
+                var list_files = [];
                 for (var i = 0, f; f = files[i]; i++) {
-                    console.log(f.mozFullPath);
-                    console.log(f);
+                    list_files.push(URL.createObjectURL(f));
 //                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
 //                    var m = document.getElementById("message");
 //                    m.innerHTML = msg + m.innerHTML;
+                }
+                var img_section = document.getElementById("img-section");
+//                img_section.append(document.createElement('div'));
+//                localStorage.setItem("images_upload_list", list_files);
+
+                for (i = 0; i < list_files.length; i++) {
+                    var img = document.createElement('img');
+                    var div_ = document.createElement('div');
+                    img.src = list_files[i];
+                    img.style = "top:0;bottom:0;left:0;right: 0;";
+                    div_.className = "medium-2 columns drag-img-container";
+                    div_.style = "float: left;";
+
+                    div_.append(img);
+                    img_section.append(div_);
                 }
                 document.getElementById("second-third").click();
 			}
@@ -424,22 +302,38 @@
 			return false;
         }
 
+
+
         var selectFiles = document.getElementById("upload_choose");
 		selectFiles.onchange = function (e) {
             e.preventDefault();
             if (e.target.files.length >= 0) {
-
-				console.log("here");
 //				$('#display_modal').foundation('reveal', 'open');
 
                 var files = e.target.files || e.dataTransfer.files;
+                var list_files = [];
                 for (var i = 0, f; f = files[i]; i++) {
-                    console.log(f);
+                    list_files.push(URL.createObjectURL(f));
 
 //                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
 //                    var m = document.getElementById("message");
 //                    m.innerHTML = msg + m.innerHTML;
                 }
+                var img_section = document.getElementById("img-section");
+//                img_section.append(document.createElement('div'));
+//                localStorage.setItem("images_upload_list", list_files);
+
+				for (i = 0; i < list_files.length; i++) {
+                    var img = document.createElement('img');
+                    var div_ = document.createElement('div');
+                    img.src = list_files[i];
+                    img.style = "top:0;bottom:0;left:0;right: 0;";
+                    div_.className = "medium-2 columns drag-img-container";
+                    div_.style = "float: left;";
+
+                    div_.append(img);
+                    img_section.append(div_);
+				}
                 document.getElementById("second-third").click();
             }
         }
