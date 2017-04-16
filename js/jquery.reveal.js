@@ -8,7 +8,8 @@
 
 
 (function($) {
-    console.log("print call");
+    // This javascript will definitely being called.
+    // console.log("print call");
 	/*---------------------------
 	 Defaults for Reveal
 	 ----------------------------*/
@@ -20,8 +21,8 @@
     $('a[data-reveal-id]').live('click', function(e) {
         e.preventDefault();
 
-
-        console.log(e);
+        //This is definitely will be called.
+        // console.log(e);
 		// if (e.currentTarget.attr('data-reveal-id').nodeValue == "drag_page") {
 
 		// }

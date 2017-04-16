@@ -22,98 +22,33 @@
 	<script>
 		$(document).ready(function() {
 			document.getElementById('user-name').innerHTML = 'Hi, ' + localStorage.getItem('user_name');
+
 		});
 	</script>
-	<script>
-		(function () {
-			$(document).ready(function () {
-//                curl http://localhost/api/sessions -k -H Authorization:<AUTHORIZATION_TOKEN>
-            	$.ajax({
-                    type: 'GET',
-                    url:"http://localhost/api/sessions",
-                    // url: 'http://coralreefsource.org/api/users/self',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Authorization': authResult['code']
-                    }
-				}).then((acquisitions)=>{
-            	    var count = 0;
-            	    acquisitions.forEach((acq)=>{
-            	        count += 1;
-            	        console.log(acq);
-            	        var
-					})
-				});
-			});
-        })(Tc.$);
-	</script>
+	<!--<script>-->
+		<!--(function () {-->
+			<!--$(document).ready(function () {-->
+<!--//                curl http://localhost/api/sessions -k -H Authorization:<AUTHORIZATION_TOKEN>-->
+            	<!--$.ajax({-->
+                    <!--type: 'GET',-->
+                    <!--url:"http://localhost/api/sessions",-->
+                    <!--// url: 'http://coralreefsource.org/api/users/self',-->
+                    <!--headers: {-->
+                        <!--'X-Requested-With': 'XMLHttpRequest',-->
+                        <!--'Authorization': authResult['code']-->
+                    <!--}-->
+				<!--}).then((acquisitions)=>{-->
+            	    <!--var count = 0;-->
+            	    <!--acquisitions.forEach((acq)=>{-->
+            	        <!--count += 1;-->
+            	        <!--console.log(acq);-->
+            	        <!--var-->
+					<!--})-->
+				<!--});-->
+			<!--});-->
+        <!--})(Tc.$);-->
+	<!--</script>-->
 </head>
-
-<style>
-	.img-in-album {
-		position: relative;
-		width: 100%;
-		height: 100%;
-	}
-	.img-star {
-		display: block;
-		background:rgba(0, 0, 0, 0.2);
-		font-size: 2rem;
-		color:rgba(120,206,188,1);
-		transform:translateY(-100%);
-		text-align:center;
-	}
-	#album_gallery {
-		width: 70vw;
-		padding-bottom: 38%;
-		background: #E6E6E6;
-
-	}
-	.card-section {
-		text-align: left;
-	}
-	.img-style-dashboard {
-		position: relative;
-		max-height: 100%;
-		object-fit: contain;
-	}
-	.album_name_style {
-		line-height: 1.0;
-		margin-bottom:10px;
-		color: #8a8a8a;
-		font-weight: bolder;
-	}
-	.album_date_style {
-		line-height: 1.0;
-		font-size: 0.8rem;
-		color: #8a8a8a;
-	}
-	.card {
-		cursor: pointer;
-		box-shadow: 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.2), 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.19);
-	}
-	.card:hover{
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
-	}
-	.slider {
-		width: 100%;
-		position:relative;
-		transform: translateY(-20px);
-	}
-
-	.slick-slide {
-		margin: 0px 20px;
-	}
-
-	.slick-slide img {
-		width: 100%;
-	}
-
-	.slick-prev:before,
-	.slick-next:before {
-		color: black;
-	}
-</style>
 
 <body>
 
@@ -159,11 +94,11 @@
 
 
 <div id="add_album" class="reveal-modal" data-reveal aria-labelledby="Add-Album" aria-hidden="true" role="dialog" >
-	<form>
+	<form action="" id="add_album_form">
 		<label style="color: gray">Give Your Album A Name.</label>
-		<input type="text" name="a_name" placeholder="Give your album a name." class="naming">
+		<input id="album_name_id" type="text" name="a_name" placeholder="Give your album a name." class="naming">
 		<!-- <input type="submit" class="button" value="NEXT"> -->
-		<a class="drag_files button" data-reveal-id="drag_page" id="first-second">NEXT</a>
+		<a class="drag_files button" data-reveal-id="drag_page" id="first-second" type="submit">NEXT</a>
 		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 	</form>
 </div>
@@ -171,7 +106,7 @@
 
 <div id="drag_page" style="z-index: 102;" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
 	<div id="dragging-box">
-		<form>
+		<form id="drag_file_form" action="">
 			<fieldset>
 				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="3000000" />
 
@@ -180,7 +115,11 @@
 				<input type="file" name="gopro_images" id="upload_choose" style="display: none;" multiple="">
 				<!--This is used for testing.-->
 				<p id="message"></p>
-				<a href="#" class="button" data-reveal-id="display_modal" id="second-third">OK</a>
+				<a href="#" class="button" data-reveal-id="display_modal" id="second-third" style="display: none;">OK</a>
+
+
+				<!--This is used to close current modal.-->
+				<a href="#" id="first_close" class="close-reveal-modal button" aria-label="Close" style="display: none;"></a>
 			</fieldset>
 		</form>
 	</div>
@@ -387,6 +326,8 @@
 			</fieldset>
 		</form>
 	</div>
+	<!--This is used to close current modal.-->
+	<a href="#" id="second_close" class="close-reveal-modal button" aria-label="Close" style="display: none;"></a>
 	<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 </div>
 
@@ -407,6 +348,8 @@
 				<span class="img-star">&#x2605;</span>
 			</div>
 		</section>
+		<!--This is used to close current modal.-->
+		<a href="#" id="third_close" class="close-reveal-modal button" aria-label="Close" style="display: none;"></a>
 		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 	</form>
 </div>
@@ -432,6 +375,9 @@
 <div id="destroy">
 </div>
 
+
+
+<!--<script type="text/javascript" src="js/upload_process.js" ></script>-->
 <script type="text/javascript" src="js/vendor/foundation.js"></script>
 <!--<script type="text/javascript" src="js/vendor/foundation.min.js"></script>-->
 <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
@@ -440,19 +386,30 @@
 <script type="text/javascript">
 
 	(function () {
+        document.getElementById("add_album_form").addEventListener("change", function() {
+            localStorage.setItem('t_name', $("#album_name_id").val());
+            console.log($("#album_name_id").val());
+        });
+
 		var dropzone = document.getElementById("dragging-box");
 
 		dropzone.ondrop = function (e) {
 			e.preventDefault();
             document.getElementById("dragging-box").style.background = "none";
             document.getElementById("dragging-box").style.opacity = "1";
-            if (e.dataTransfer.files.length >= 1) {
+            console.log(e);
+            if (e.dataTransfer.files.length >= 0) {
+//                console.log(emozFullPath);
                 var files = e.target.files || e.dataTransfer.files;
+
                 for (var i = 0, f; f = files[i]; i++) {
-                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
-                    var m = document.getElementById("message");
-                    m.innerHTML = msg + m.innerHTML;
+                    console.log(f.mozFullPath);
+                    console.log(f);
+//                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
+//                    var m = document.getElementById("message");
+//                    m.innerHTML = msg + m.innerHTML;
                 }
+                document.getElementById("second-third").click();
 			}
         }
 
@@ -466,40 +423,28 @@
             document.getElementById("dragging-box").style.opacity = "1";
 			return false;
         }
+
         var selectFiles = document.getElementById("upload_choose");
 		selectFiles.onchange = function (e) {
             e.preventDefault();
-            if (e.target.files.length >= 1) {
+            if (e.target.files.length >= 0) {
+
+				console.log("here");
+//				$('#display_modal').foundation('reveal', 'open');
+
                 var files = e.target.files || e.dataTransfer.files;
                 for (var i = 0, f; f = files[i]; i++) {
-                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
-                    var m = document.getElementById("message");
-                    m.innerHTML = msg + m.innerHTML;
+                    console.log(f);
+
+//                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
+//                    var m = document.getElementById("message");
+//                    m.innerHTML = msg + m.innerHTML;
                 }
+                document.getElementById("second-third").click();
             }
         }
     }());
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <script>
     var upload_btn = document.getElementById("upload-button");

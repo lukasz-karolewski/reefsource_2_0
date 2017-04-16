@@ -145,6 +145,8 @@
 		});
 
 		function signInCallback(authResult) {
+		    console.log(authResult['code']);
+		    localStorage.setItem("autho_db",authResult['code']);
 			if (authResult['code']) {
 				$.ajax({
 					type: 'GET',
