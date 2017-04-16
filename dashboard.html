@@ -25,29 +25,83 @@
 
 		});
 	</script>
+
+
+	<!--        SHOULD IMPLEMENT THIS TOMORROW.  DON'T FORGET.        -->
+
 	<!--<script>-->
-		<!--(function () {-->
-			<!--$(document).ready(function () {-->
-<!--//                curl http://localhost/api/sessions -k -H Authorization:<AUTHORIZATION_TOKEN>-->
-            	<!--$.ajax({-->
-                    <!--type: 'GET',-->
-                    <!--url:"http://localhost/api/sessions",-->
-                    <!--// url: 'http://coralreefsource.org/api/users/self',-->
-                    <!--headers: {-->
-                        <!--'X-Requested-With': 'XMLHttpRequest',-->
-                        <!--'Authorization': authResult['code']-->
+        <!--// terrificjs bootstrap-->
+        <!--(function($) {-->
+            <!--$(document).ready(function() {-->
+                <!--var $page = $('body');-->
+                <!--var config = {-->
+                    <!--dependencyPath: {-->
+                        <!--plugin: 'javascripts/'-->
                     <!--}-->
-				<!--}).then((acquisitions)=>{-->
-            	    <!--var count = 0;-->
-            	    <!--acquisitions.forEach((acq)=>{-->
-            	        <!--count += 1;-->
-            	        <!--console.log(acq);-->
-            	        <!--var-->
-					<!--})-->
-				<!--});-->
-			<!--});-->
+                <!--}-->
+                <!--var application = new Tc.Application($page, config);-->
+                <!--application.registerModules();-->
+                <!--application.start();-->
+
+
+
+
+                <!--&lt;!&ndash;Part of April 15th&ndash;&gt;-->
+				<!--var auth_code = localStorage.getItem("autho_db");-->
+<!--//				List Albums attached to the user.-->
+
+				<!---->
+
+
+                <!--var apiURL = 'api/sessions/' + sessionId + '/acquisitions';-->
+                <!--$.ajax({-->
+                    <!--'type': 'GET',-->
+                    <!--url: apiURL,-->
+                    <!--headers: headersAPI-->
+                <!--}).then((acquisitions)=>{-->
+                    <!--var count = 0;-->
+                <!--acquisitions.forEach((acq) => {-->
+                    <!--count += 1-->
+                <!--var latitude = acq.info.latitude;-->
+                <!--var longitude = acq.info.longitude;-->
+                <!--var createdat = acq.created;-->
+                <!--console.log(acq);-->
+                <!--// console.log(acq.info);-->
+                <!--acq.files.forEach((f) => {-->
+                    <!--if (f.type == 'image') {-->
+                    <!--var li = document.createElement('li');-->
+                    <!--$('#show_albums ul').append(li);-->
+                    <!--console.log(acq._id);-->
+                    <!--var url = 'api/acquisitions/' + acq._id + '/files/' + f.name + '?ticket=';-->
+                    <!--$.ajax({-->
+                        <!--'type': 'GET',-->
+                        <!--'url': url,-->
+                        <!--'headers': headersAPI-->
+                    <!--}).then((content) => {-->
+                        <!--// console.log(content);-->
+                        <!--var div = document.createElement('div');-->
+                    <!--var img = document.createElement('img');-->
+                    <!--var p = document.createElement('p');-->
+
+                    <!--p.innerHTML = f.name +"<br>Created Time:&nbsp" + createdat.slice(0,10) + '<br>Latitude:&nbsp'+latitude+"<br>Longitude:&nbsp"+longitude;-->
+                    <!--p.className += " imgDescription";-->
+                    <!--div.className += " image-container";-->
+                    <!--div.className += " imgWrap";-->
+                    <!--img.src = url + content.ticket;-->
+                    <!--div.append(p);-->
+                    <!--div.append(img);-->
+                    <!--li.append(div);-->
+                <!--});-->
+                <!--}-->
+            <!--});-->
+            <!--})-->
+                <!--document.getElementById("total_contribute_image").innerHTML = "You have uploaded " + count + " images to us. Hooray!"-->
+            <!--});-->
+                <!--// &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Feb 17-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--});-->
         <!--})(Tc.$);-->
 	<!--</script>-->
+
 </head>
 
 <body>
@@ -154,7 +208,7 @@
 				<div class="row img-section">
 					<div class="row">
 						<div class="large-9 columns" id="img-section" style="text-align: left;">
-							<!--Image Example.-->
+							<!--             Image Example.              -->
 
 							<!--<div class="medium-2 columns drag-img-container" style="float: left;">-->
 								<!--<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">-->
@@ -348,7 +402,6 @@
 </script>
 <script type="text/javascript">
     $(document).on('ready', function() {
-
         $(".photo_show").slick({
             dots: true,
             infinite: true,
