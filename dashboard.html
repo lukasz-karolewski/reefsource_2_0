@@ -304,6 +304,24 @@
 <script type="text/javascript">
 
 	(function () {
+	    var apiURL = "http://coralreefsource.org/api/sessions";
+        $.ajax({
+            'type':'GET',
+            url : apiURL,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': localStorage.getItem("auth_token")
+            },
+            success:function(result){
+                alert(result);
+                console.log(result);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+
+
         document.getElementById("add_album_form").addEventListener("change", function() {
             localStorage.setItem('t_name', $("#album_name_id").val());
             $('input[name="album_name_"]').val(localStorage.getItem('t_name'));
@@ -393,7 +411,27 @@
         }
     }());
 </script>
-
+<!--<script>-->
+    <!--window.onload = function() {-->
+        <!--console.log("great");-->
+        <!--var apiURL = 'api/sessions';-->
+        <!--$.ajax({-->
+            <!--'type':'GET',-->
+            <!--url : apiURL,-->
+            <!--headers: {-->
+                <!--'X-Requested-With': 'XMLHttpRequest',-->
+                <!--'Authorization': localStorage.getItem("auth_token")-->
+            <!--},-->
+            <!--success:function(result){-->
+                <!--alert(result);-->
+                <!--console.log(result);-->
+            <!--},-->
+            <!--error: function (err) {-->
+                <!--console.log(err)-->
+            <!--}-->
+        <!--});-->
+    <!--};-->
+<!--</script>-->
 <script>
     var upload_btn = document.getElementById("upload-button");
     upload_btn.onclick = function () {

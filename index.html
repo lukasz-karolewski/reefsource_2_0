@@ -55,10 +55,7 @@
                 auth2 = gapi.auth2.init({
                     client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com',
                     cookiepolicy: 'single_host_origin',
-                    // Request scopes in addition to 'profile' and 'email'
-                    //scope: 'additional_scope'
                 });
-//                console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
                 attachSignin(document.getElementById('customized_sign_in_button'));
             });
         };
@@ -68,13 +65,14 @@
                 function(googleUser) {
                 	console.log(googleUser.getBasicProfile().getName());
                 	console.log(googleUser.getBasicProfile().getFamilyName());
+                	localStorage.setItem('email', googleUser.getBasicProfile().getEmail());
+                	localStorage.setItem('first_name', googleUser.getBasicProfile().getGivenName());
+                    localStorage.setItem('family_name', googleUser.getBasicProfile().getFamilyName());
                 	console.log(googleUser.getBasicProfile().getGivenName());
                 	console.log(googleUser.getBasicProfile().getEmail());
 
-//                	Save user name and jump to user dashbaord page.
                     localStorage.setItem('user_name', googleUser.getBasicProfile().getGivenName());
                     signInCallback(googleUser.getBasicProfile().getEmail());
-//                    window.location.href = "dashboard.html";
                 }, function(error) {
                     alert(JSON.stringify(error, undefined, 2));
                 }
@@ -87,20 +85,57 @@
             if (authResult) {
                 $.ajax({
                     type: 'GET',
-//					url:'http://ec2-184-72-166-124.compute-1.amazonaws.com/api/users/self',
-                    url: 'http://coralreefsource.org/api/projects',
+                    url: 'http://coralreefsource.org/api/user/self',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
                         'Authorization': authResult
                     },
-                    success: function() {
+                    success: function(result) {
+                        console.log(result);
+                        localStorage.setItem("auth_token", authResult);
                         console.log("success");
                         window.location.href = "dashboard.html";
-//                        Function to get new pages
-//                        onSignIn(user);
                     },
                     error: function(err){
-                        console.log("haha");
+                        var error_code = err.status;
+                        console.log(err.status);
+                        if (error_code === 404){
+                            var payload = {
+                                "_id": localStorage.getItem('email'),
+								"firstname": localStorage.getItem("first_name"),
+								"lastname": localStorage.getItem("family_name")
+							};
+							$.ajax({
+								type: 'POST',
+                                url: 'http://coralreefsource.org/api/users?root=true',
+								headers: {
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'Authorization': authResult
+								},
+                                data: JSON.stringify(payload),
+								success: function () {
+									$.ajax({
+                                        type: 'GET',
+                                        url: 'http://coralreefsource.org/api/users',
+                                        headers: {
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                            'Authorization': authResult
+                                        },
+										success: function (result) {
+											console.log(result);
+                                        },
+										error: function (err) {
+                                            console.log("after creating users");
+											console.log(err);
+                                        }
+									});
+                                },
+								error:function (err) {
+								    console.log("problem with creating users");
+									console.log(err);
+                                }
+							});
+						}
                         console.log(err);
                     }
                 });
