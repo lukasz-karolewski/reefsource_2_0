@@ -10,8 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/landingpage.css">
 	<link rel="stylesheet" type="text/css" href="css/reveal.css">
 	<script src="js/libs.js" type="text/javascript"></script>
-	<!--<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>-->
-	<!--<script type="text/javascript" src="js/jquery.reveal.js"></script>-->
+	<script type="text/javascript" src="js/vendor/foundation.min.js"></script>
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 
 	<script>
         // terrificjs bootstrap
@@ -32,52 +32,83 @@
 	<!--Google Signin-->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
-	<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
-	<script>
-    	function start() {
-			gapi.load('auth2', function() {
-				auth2 = gapi.auth2.init({
-					client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com'
-				});
-			});
-		}
-	</script>
+	<!--<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>-->
+	<!--<script>-->
+    	<!--function start() {-->
+			<!--gapi.load('auth2', function() {-->
+				<!--auth2 = gapi.auth2.init({-->
+					<!--client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com'-->
+				<!--});-->
+			<!--});-->
+		<!--}-->
+	<!--</script>-->
 
 	<script src="js/masonry.pkgd.js" type="text/javascript"></script>
 
 
-	<!--<script src="https://apis.google.com/js/api:client.js"></script>-->
-	<!--<script>-->
-        <!--var googleUser = {};-->
-        <!--var startApp = function() {-->
-            <!--gapi.load('auth2', function(){-->
-                <!--// Retrieve the singleton for the GoogleAuth library and set up the client.-->
-                <!--auth2 = gapi.auth2.init({-->
-                    <!--client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com',-->
-                    <!--cookiepolicy: 'single_host_origin',-->
-                    <!--// Request scopes in addition to 'profile' and 'email'-->
-                    <!--//scope: 'additional_scope'-->
-                <!--});-->
-                <!--console.log(gapi.auth2.getAuthInstance().isSignedIn.get());-->
-                <!--attachSignin(document.getElementById('customized_sign_in_button'));-->
-            <!--});-->
-        <!--};-->
-        <!--function attachSignin(element) {-->
-            <!--console.log(element.id);-->
-            <!--auth2.attachClickHandler(element, {},-->
-                <!--function(googleUser) {-->
-                	<!--console.log(googleUser.getBasicProfile().getName());-->
-                	<!--console.log(googleUser.getBasicProfile().getFamilyName());-->
-                	<!--console.log(googleUser.getBasicProfile().getGivenName());-->
-                	<!--console.log(googleUser.getBasicProfile().getEmail());-->
-<!--//                	Save user name and jump to user dashbaord page.-->
-                    <!--localStorage.setItem('user_name', googleUser.getBasicProfile().getGivenName());-->
-                    <!--window.location.href = "dashboard.html";-->
-                <!--}, function(error) {-->
-                    <!--alert(JSON.stringify(error, undefined, 2));-->
-                <!--});-->
-        <!--}-->
-	<!--</script>-->
+	<script src="https://apis.google.com/js/api:client.js"></script>
+	<script>
+        var googleUser = {};
+        var startApp = function() {
+            gapi.load('auth2', function(){
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+//                console.log(gapi.auth2.getAuthInstance().isSignedIn.get());
+                attachSignin(document.getElementById('customized_sign_in_button'));
+            });
+        };
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function(googleUser) {
+                	console.log(googleUser.getBasicProfile().getName());
+                	console.log(googleUser.getBasicProfile().getFamilyName());
+                	console.log(googleUser.getBasicProfile().getGivenName());
+                	console.log(googleUser.getBasicProfile().getEmail());
+
+//                	Save user name and jump to user dashbaord page.
+                    localStorage.setItem('user_name', googleUser.getBasicProfile().getGivenName());
+                    signInCallback(googleUser.getBasicProfile().getEmail());
+//                    window.location.href = "dashboard.html";
+                }, function(error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                }
+			);
+        }
+
+        function signInCallback(authResult) {
+            console.log(authResult);
+            localStorage.setItem("autho_db",authResult);
+            if (authResult) {
+                $.ajax({
+                    type: 'GET',
+//					url:'http://ec2-184-72-166-124.compute-1.amazonaws.com/api/users/self',
+                    url: 'http://coralreefsource.org/api/projects',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'Authorization': authResult
+                    },
+                    success: function() {
+                        console.log("success");
+                        window.location.href = "dashboard.html";
+//                        Function to get new pages
+//                        onSignIn(user);
+                    },
+                    error: function(err){
+                        console.log("haha");
+                        console.log(err);
+                    }
+                });
+            } else {
+                console.log('Authentication failure');
+            }
+        }
+	</script>
 
 
 
@@ -136,54 +167,8 @@
 </div>
 
 
+<script>startApp();</script>
 
-
-<script type="text/javascript">
-	(function($) {
-
-		$('#customized_sign_in_button').click(function() {
-			auth2.grantOfflineAccess().then(signInCallback);
-		});
-
-		function signInCallback(authResult) {
-		    console.log(authResult['code']);
-		    localStorage.setItem("autho_db",authResult['code']);
-			if (authResult['code']) {
-				$.ajax({
-					type: 'GET',
-//					url:'http://ec2-184-72-166-124.compute-1.amazonaws.com/api/users/self',
-					url: 'http://coralreefsource.org/api/users/self',
-					headers: {
-						'X-Requested-With': 'XMLHttpRequest',
-						'Authorization': authResult['code']
-					},
-					success: function(user) {
-						console.log(user);
-                 		onSignIn(user);
-                    }
-                });
-            } else {
-                 console.log('Authentication failure');
-            }
-        }
-    })(Tc.$);
-	function onSignIn(profile) {
-		console.log('ID: ' + profile._id); // Do not send to your backend! Use an ID token instead.
-		console.log('Name: ' + profile.firstname + ' ' + profile.lastname);
-		console.log('Image URL: ' + profile.avatars['provider']);
-		console.log('Email: ' + profile.email);
-		var listvalues = {"Name": profile.firstname + ' ' + profile.lastname, "Email": profile.email};
-        localStorage.setItem('user_name', profile.firstname);
-		localStorage.setItem('lists', JSON.stringify(listvalues));
-		document.getElementById("sign-up-toggle").style.display = "none";
-        window.location.href="dashboard.html";
-	}
-//        document.getElementById("user_on_page").style.display = "block";
-
-</script>
-<!--<script>startApp();</script>-->
-<script type="text/javascript" src="js/vendor/foundation.min.js"></script>
-<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="js/jquery.reveal.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </body>
