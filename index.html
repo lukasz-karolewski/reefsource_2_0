@@ -32,118 +32,128 @@
 	<!--Google Signin-->
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 
-	<!--<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>-->
-	<!--<script>-->
-    	<!--function start() {-->
-			<!--gapi.load('auth2', function() {-->
-				<!--auth2 = gapi.auth2.init({-->
-					<!--client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com'-->
-				<!--});-->
-			<!--});-->
-		<!--}-->
-	<!--</script>-->
+	<script src="https://apis.google.com/js/client:platform.js?onload=start" async defer></script>
+	<script>
+    	function start() {
+			gapi.load('auth2', function() {
+				auth2 = gapi.auth2.init({
+					client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com',
+                    scope: 'profile email'
+				});
+			});
+		}
+	</script>
+
 
 	<script src="js/masonry.pkgd.js" type="text/javascript"></script>
 
 
-	<script src="https://apis.google.com/js/api:client.js"></script>
-	<script>
-        var googleUser = {};
-        var startApp = function() {
-            gapi.load('auth2', function(){
-                // Retrieve the singleton for the GoogleAuth library and set up the client.
-                auth2 = gapi.auth2.init({
-                    client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com',
-                    cookiepolicy: 'single_host_origin',
-                });
-                attachSignin(document.getElementById('customized_sign_in_button'));
-            });
-        };
-        function attachSignin(element) {
-            console.log(element.id);
-            auth2.attachClickHandler(element, {},
-                function(googleUser) {
-                	console.log(googleUser.getBasicProfile().getName());
-                	console.log(googleUser.getBasicProfile().getFamilyName());
-                	localStorage.setItem('email', googleUser.getBasicProfile().getEmail());
-                	localStorage.setItem('first_name', googleUser.getBasicProfile().getGivenName());
-                    localStorage.setItem('family_name', googleUser.getBasicProfile().getFamilyName());
-                	console.log(googleUser.getBasicProfile().getGivenName());
-                	console.log(googleUser.getBasicProfile().getEmail());
+	<!--<script src="https://apis.google.com/js/api:client.js"></script>-->
+	<!--<script>-->
 
-                    localStorage.setItem('user_name', googleUser.getBasicProfile().getGivenName());
-                    signInCallback(googleUser.getBasicProfile().getEmail());
-                }, function(error) {
-                    alert(JSON.stringify(error, undefined, 2));
-                }
-			);
-        }
+        <!--var googleUser = {};-->
+        <!--var startApp = function() {-->
+            <!--gapi.load('auth2', function(){-->
+                <!--// Retrieve the singleton for the GoogleAuth library and set up the client.-->
+                <!--auth2 = gapi.auth2.init({-->
+                    <!--client_id: '198434096526-c806a42elrrhvl89g6b581tmjvbonu3n.apps.googleusercontent.com',-->
+                    <!--cookiepolicy: 'single_host_origin',-->
+                <!--});-->
+                <!--console.log(auth2.grantOfflineAccess());-->
+                <!--auth2.grantOfflineAccess().then(function(resp){-->
+                    <!--var auth_code = resp.code;-->
+                    <!--console.log(auth_code);-->
+                <!--});-->
+             <!--attachSignin(auth2, document.getElementById('customized_sign_in_button'));-->
+            <!--});-->
+        <!--};-->
+        <!--function attachSignin(auth2value, element) {-->
+            <!--console.log(auth2value);-->
+            <!--console.log(element.id);-->
+            <!--auth2.attachClickHandler(element, {},-->
+                <!--function(googleUser) {-->
+                	<!--console.log(googleUser.Zi.access_token);-->
+					<!--console.log(googleUser.getBasicProfile().getName());-->
+                	<!--console.log(googleUser.getBasicProfile().getFamilyName());-->
+                	<!--localStorage.setItem('email', googleUser.getBasicProfile().getEmail());-->
+                	<!--localStorage.setItem('first_name', googleUser.getBasicProfile().getGivenName());-->
+                    <!--localStorage.setItem('family_name', googleUser.getBasicProfile().getFamilyName());-->
+                	<!--console.log(googleUser.getBasicProfile().getGivenName());-->
+                	<!--console.log(googleUser.getBasicProfile().getEmail());-->
 
-        function signInCallback(authResult) {
-            console.log(authResult);
-            localStorage.setItem("autho_db",authResult);
-            if (authResult) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'http://coralreefsource.org/api/user/self',
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest',
-                        'Authorization': authResult
-                    },
-                    success: function(result) {
-                        console.log(result);
-                        localStorage.setItem("auth_token", authResult);
-                        console.log("success");
-                        window.location.href = "dashboard.html";
-                    },
-                    error: function(err){
-                        var error_code = err.status;
-                        console.log(err.status);
-                        if (error_code === 404){
-                            var payload = {
-                                "_id": localStorage.getItem('email'),
-								"firstname": localStorage.getItem("first_name"),
-								"lastname": localStorage.getItem("family_name")
-							};
-							$.ajax({
-								type: 'POST',
-                                url: 'http://coralreefsource.org/api/users?root=true',
-								headers: {
-                                    'X-Requested-With': 'XMLHttpRequest',
-                                    'Authorization': authResult
-								},
-                                data: JSON.stringify(payload),
-								success: function () {
-									$.ajax({
-                                        type: 'GET',
-                                        url: 'http://coralreefsource.org/api/users',
-                                        headers: {
-                                            'X-Requested-With': 'XMLHttpRequest',
-                                            'Authorization': authResult
-                                        },
-										success: function (result) {
-											console.log(result);
-                                        },
-										error: function (err) {
-                                            console.log("after creating users");
-											console.log(err);
-                                        }
-									});
-                                },
-								error:function (err) {
-								    console.log("problem with creating users");
-									console.log(err);
-                                }
-							});
-						}
-                        console.log(err);
-                    }
-                });
-            } else {
-                console.log('Authentication failure');
-            }
-        }
-	</script>
+                    <!--localStorage.setItem('user_name', googleUser.getBasicProfile().getGivenName());-->
+                    <!--signInCallback(auth2value);-->
+                <!--}, function(error) {-->
+                    <!--alert(JSON.stringify(error, undefined, 2));-->
+                <!--}-->
+			<!--);-->
+        <!--}-->
+
+        <!--function signInCallback(authResult) {-->
+            <!--console.log(authResult);-->
+            <!--localStorage.setItem("autho_db",authResult);-->
+            <!--if (authResult) {-->
+                <!--$.ajax({-->
+                    <!--type: 'GET',-->
+                    <!--url: 'http://coralreefsource.org/api/user/self',-->
+                    <!--headers: {-->
+                        <!--'X-Requested-With': 'XMLHttpRequest',-->
+                        <!--'Authorization': authResult-->
+                    <!--},-->
+                    <!--success: function(result) {-->
+                        <!--console.log(result);-->
+                        <!--localStorage.setItem("auth_token", authResult);-->
+                        <!--console.log("success");-->
+                        <!--window.location.href = "dashboard.html";-->
+                    <!--},-->
+                    <!--error: function(err){-->
+                        <!--var error_code = err.status;-->
+                        <!--console.log(err.status);-->
+                        <!--if (error_code === 404){-->
+                            <!--var payload = {-->
+                                <!--"_id": localStorage.getItem('email'),-->
+								<!--"firstname": localStorage.getItem("first_name"),-->
+								<!--"lastname": localStorage.getItem("family_name")-->
+							<!--};-->
+							<!--$.ajax({-->
+								<!--type: 'POST',-->
+                                <!--url: 'http://coralreefsource.org/api/users?root=true',-->
+								<!--headers: {-->
+                                    <!--'X-Requested-With': 'XMLHttpRequest',-->
+                                    <!--'Authorization': 'scitran-user test'-->
+								<!--},-->
+                                <!--data: JSON.stringify(payload),-->
+								<!--success: function () {-->
+									<!--$.ajax({-->
+                                        <!--type: 'GET',-->
+                                        <!--url: 'http://coralreefsource.org/api/users',-->
+                                        <!--headers: {-->
+                                            <!--'X-Requested-With': 'XMLHttpRequest',-->
+                                            <!--'Authorization': authResult-->
+                                        <!--},-->
+										<!--success: function (result) {-->
+											<!--console.log(result);-->
+                                        <!--},-->
+										<!--error: function (err) {-->
+                                            <!--console.log("after creating users");-->
+											<!--console.log(err);-->
+                                        <!--}-->
+									<!--});-->
+                                <!--},-->
+								<!--error:function (err) {-->
+								    <!--console.log("problem with creating users");-->
+									<!--console.log(err);-->
+                                <!--}-->
+							<!--});-->
+						<!--}-->
+                        <!--console.log(err);-->
+                    <!--}-->
+                <!--});-->
+            <!--} else {-->
+                <!--console.log('Authentication failure');-->
+            <!--}-->
+        <!--}-->
+	<!--</script>-->
 
 
 
@@ -177,8 +187,8 @@
 	  	</div>
 	</div>
 	<div class="land_sub">
-		<p id="description">Crowdsourcing images for coral reef health analysis and storytelling</p>
-		<p id="subdescription">Participate today by submitting photos from a recent dive.</p>
+		<p id="description">THE CROWD-SOURCING ENVIRONMENTAL PROJECT</p>
+		<p id="subdescription">We care about coral reef health.</p>
 		<a class="button contribute-button" href="#" data-reveal-id="modal_signup">CONTRIBUTE PHOTOS</a>
 	</div>
 </div>
@@ -201,8 +211,88 @@
   <a class="close-reveal-modal button" aria-label="Close">&#215;</a>
 </div>
 
+<script>
+    $('#customized_sign_in_button').click(function() {
+        // signInCallback defined in step 6.
+        auth2.grantOfflineAccess().then(signInCallback);
+    });
 
-<script>startApp();</script>
+    function signInCallback(authResult) {
+        if (authResult['code']) {
+            console.log(authResult);
+			console.log(authResult['code']);
+            // Hide the sign-in button now that the user is authorized, for example:
+//            $('#customized_sign_in_button').attr('style', 'display: none');
+
+            // Send the code to the server
+            $.ajax({
+
+                type: 'GET',
+                url: 'http://coralreefsource.org/api/user/self',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Authorization': authResult['code']
+                },
+                success: function(result) {
+                    console.log(result);
+                    localStorage.setItem("auth_token", authResult['code']);
+                    console.log("success");
+//                    window.location.href = "dashboard.html";
+                },
+                error: function(err) {
+                    var error_code = err.status;
+                    if (error_code === 404){
+
+                        var payload = {
+                                "_id": 'dailinshen@gmail.com',
+                                'firstname':'Dailin',
+                                'lastname':'Shen',
+								'email': 'dailinshen@gmail.com',
+								'root': false
+                            };
+						$.ajax({
+							type :'POST',
+							url: 'http://coralreefsource.org/api/users?root=true',
+							headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'Authorization': authResult['code']
+							},
+//                            data: JSON.stringify(payload),
+							success: function () {
+								console.log("success");
+                            },
+							error: function (err) {
+							    console.log('fail creating users');
+								console.log(err);
+                            }
+						});
+					}
+
+                    console.log(error_code);
+                    console.log(err.status);
+                }
+
+//                type: 'POST',
+//                url: 'http://example.com/storeauthcode',
+//                // Always include an `X-Requested-With` header in every AJAX request,
+//                // to protect against CSRF attacks.
+//                headers: {
+//                    'X-Requested-With': 'XMLHttpRequest'
+//                },
+//                contentType: 'application/octet-stream; charset=utf-8',
+//                success: function(result) {
+//                    // Handle or verify the server response.
+//                },
+//                processData: false,
+//                data: authResult['code']
+            });
+        } else {
+            // There was an error.
+        }
+    }
+
+</script>
+<!--<script>startApp();</script>-->
 
 <script type="text/javascript" src="js/jquery.reveal.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
