@@ -1,0 +1,225 @@
+.img-in-album {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.img-star {
+    display: block;
+    background:rgba(0, 0, 0, 0.2);
+    font-size: 2rem;
+    color:rgba(120,206,188,1);
+    transform:translateY(-100%);
+    text-align:center;
+}
+#album_gallery {
+    width: 70vw;
+    padding-bottom: 38%;
+    background: #E6E6E6;
+
+}
+.card-section {
+    text-align: left;
+}
+.img-style-dashboard {
+    position: relative;
+    max-height: 100%;
+    object-fit: contain;
+}
+.album_name_style {
+    line-height: 1.0;
+    margin-bottom:10px;
+    color: #8a8a8a;
+    font-weight: bolder;
+}
+.album_date_style {
+    line-height: 1.0;
+    font-size: 0.8rem;
+    color: #8a8a8a;
+}
+.card {
+    cursor: pointer;
+    box-shadow: 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.2), 0 0.5px 0.5px 0 rgba(0, 0, 0, 0.19);
+}
+.card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 30px 0 rgba(0, 0, 0, 0.19);
+}
+.slider {
+    width: 100%;
+    position:relative;
+    transform: translateY(-20px);
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+#dragging-box, #background-box {
+    background: none;
+    display: inline;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#display_modal {
+    width: 90%;
+    height: 90%;
+}
+.background-box {
+    position: absolute;
+    width: 95%;
+    height: 90%;
+    top: 5%;
+    left: 2.5%;
+    padding: 5px 5px 5px;
+    background: #deecf0;
+}
+.top-bar-right {
+    padding-right: 35px;
+    padding-top: 20px;
+}
+.img-section {
+    position:absolute;
+    width:95%;
+    height:86%;
+    top:7%;
+    left:4%;
+}
+#img-section {
+    cursor: pointer;
+    padding-top: 1%;
+    overflow-y: scroll;
+    position:absolute;
+    height:100%;
+    background:white;
+    border-radius:0.5rem;
+    left:0px;
+}
+#img-section:hover {
+    -webkit-box-shadow: 0 0 5px 5px #d2d8d7;
+    -moz-box-shadow: 0 0 5px 5px #d2d8d7;
+    box-shadow: 0 0 5px 5px #d2d8d7;
+    z-index: 10;
+}
+#user-name{
+    color: #19A99D;
+    font-weight: bold;
+}
+input#select {
+    margin: 0 0 0rem;
+}
+#metadata-section {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    background: white;
+    border:10px solid #deecf0;
+    border-left-width: 5px;
+    border-top-width:0px;
+    border-bottom-width:0px;
+    border-right-color: white;
+    border-radius: 0.95rem;
+    right:0px;
+}
+#metadata-section:hover {
+    border-left-color: white;
+    -webkit-box-shadow: 0 0 5px 5px #d2d8d7;
+    -moz-box-shadow: 0 0 5px 5px #d2d8d7;
+    box-shadow: 0 0 5px 5px #d2d8d7;
+}
+#metadata-section{
+}
+#metadata-section label{
+    left:0px;
+    font-weight:bold;
+    text-align: left;
+}
+.drag-img-container {
+    cursor: pointer;
+    border-radius: 0.5rem;
+    background: #dddddd;
+    opacity: 0.5;
+    border:3px solid white;
+    height: 25%;
+}
+.drag-img-container:hover{
+    -webkit-box-shadow: 0 0 5px 5px #d2d8d7;
+    -moz-box-shadow: 0 0 5px 5px #d2d8d7;
+    box-shadow: 0 0 5px 5px #d2d8d7;
+}
+.drag-img-container img{
+    height:100%;
+    width:100%;
+    padding:0 0 0 0;
+}
+.upload-button-drag {
+    position:absolute;
+    bottom: 0;
+    left:50%;
+    transform:translateX(-50%) translateY(50%);
+    width:80%;
+    height:auto;
+}
+.button-upload {
+    background: #19A99D;
+    color: #fff;
+    width: inherit;
+    font-size:1rem;
+    border-radius: 0.7rem;
+    /*font-weight: bold;*/
+}
+#delete {
+    font-weight:bold;
+    color: darkred;
+    cursor: pointer;
+}
+#select-all {
+    font-weight: bold;
+}
+#delete:hover{
+    color: red;
+}
+.sub-menu-bar {
+    position: absolute;
+    left: 15%;
+    transform: translateX(-15%) translateY(-170%);
+}
+.sub-menu-bar a {
+    font-weight:bold;
+
+}
+.sub-menu-bar a:hover, .sub-menu-bar a:focus, .sub-menu-bar a.is-active{
+    border-bottom: 1px solid #19A99D;
+    color: #19A99D;
+}
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-track {
+    /*border: 1px solid yellowgreen;*/
+    /*border-radius: 10px;*/
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d2cdca;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d2cdca;
+}

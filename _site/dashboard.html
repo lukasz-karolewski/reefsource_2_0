@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>REEFSOURCE</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Using the environment as a firsthand storytelling source">
+	<link rel="stylesheet" type="text/css" href="css/foundation.css" />
+	<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.min.css"/>-->
+	<link rel="stylesheet" type="text/css" href="css/landingpage.css" />
+	<link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+	<link rel="stylesheet" type="text/css" href="css/reveal.css" />
+
+	<link rel="stylesheet" type="text/css" href="css/slick/slick.css">
+	<link rel="stylesheet" type="text/css" href="css/slick/slick-theme.css">
+	<script src="js/libs.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+
+	<script type="text/javascript" src="js/jquery.reveal.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			document.getElementById('user-name').innerHTML = 'Hi, ' + localStorage.getItem('user_name');
+
+		});
+	</script>
+
+
+	<!--        SHOULD IMPLEMENT THIS TOMORROW.  DON'T FORGET.        -->
+
+	<!--<script>-->
+        <!--// terrificjs bootstrap-->
+        <!--(function($) {-->
+            <!--$(document).ready(function() {-->
+                <!--var $page = $('body');-->
+                <!--var config = {-->
+                    <!--dependencyPath: {-->
+                        <!--plugin: 'javascripts/'-->
+                    <!--}-->
+                <!--}-->
+                <!--var application = new Tc.Application($page, config);-->
+                <!--application.registerModules();-->
+                <!--application.start();-->
+
+
+
+
+                <!--&lt;!&ndash;Part of April 15th&ndash;&gt;-->
+				<!--var auth_code = localStorage.getItem("autho_db");-->
+<!--//				List Albums attached to the user.-->
+
+				<!---->
+
+
+                <!--var apiURL = 'api/sessions/' + sessionId + '/acquisitions';-->
+                <!--$.ajax({-->
+                    <!--'type': 'GET',-->
+                    <!--url: apiURL,-->
+                    <!--headers: headersAPI-->
+                <!--}).then((acquisitions)=>{-->
+                    <!--var count = 0;-->
+                <!--acquisitions.forEach((acq) => {-->
+                    <!--count += 1-->
+                <!--var latitude = acq.info.latitude;-->
+                <!--var longitude = acq.info.longitude;-->
+                <!--var createdat = acq.created;-->
+                <!--console.log(acq);-->
+                <!--// console.log(acq.info);-->
+                <!--acq.files.forEach((f) => {-->
+                    <!--if (f.type == 'image') {-->
+                    <!--var li = document.createElement('li');-->
+                    <!--$('#show_albums ul').append(li);-->
+                    <!--console.log(acq._id);-->
+                    <!--var url = 'api/acquisitions/' + acq._id + '/files/' + f.name + '?ticket=';-->
+                    <!--$.ajax({-->
+                        <!--'type': 'GET',-->
+                        <!--'url': url,-->
+                        <!--'headers': headersAPI-->
+                    <!--}).then((content) => {-->
+                        <!--// console.log(content);-->
+                        <!--var div = document.createElement('div');-->
+                    <!--var img = document.createElement('img');-->
+                    <!--var p = document.createElement('p');-->
+
+                    <!--p.innerHTML = f.name +"<br>Created Time:&nbsp" + createdat.slice(0,10) + '<br>Latitude:&nbsp'+latitude+"<br>Longitude:&nbsp"+longitude;-->
+                    <!--p.className += " imgDescription";-->
+                    <!--div.className += " image-container";-->
+                    <!--div.className += " imgWrap";-->
+                    <!--img.src = url + content.ticket;-->
+                    <!--div.append(p);-->
+                    <!--div.append(img);-->
+                    <!--li.append(div);-->
+                <!--});-->
+                <!--}-->
+            <!--});-->
+            <!--})-->
+                <!--document.getElementById("total_contribute_image").innerHTML = "You have uploaded " + count + " images to us. Hooray!"-->
+            <!--});-->
+                <!--// &lt;!&ndash;-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;Feb 17-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+            <!--});-->
+        <!--})(Tc.$);-->
+	<!--</script>-->
+
+</head>
+
+<body>
+
+
+
+
+<div class="sticky-container" data-sticky-container style="height: 25vh;">
+	<div style="width: 100%; margin-top: 0em; top: 0px; bottom: auto; left: 0px; background: #eee;" class="sticky is-stuck is-at-top" data-sticky="8qoug4-sticky" data-options="marginTop:0;anchor:stickhere;" data-resize="k03y85-sticky">
+		<div class="welcome-dashboard">
+			
+			<div class="top-bar">
+			  	<div class="top-bar-left">
+			    	<ul class="dropdown menu dashboard-a" data-dropdown-menu>
+						<li class="menu-text-dashboard">RE<span>EF</span>SOURCE</li>
+			      		<li class="mega-menu"><a data-toggle="mega-menu" href="index.html">LEARN</a></li>
+			      		<li><a href="#">MAP</a></li>
+			      		<li><a href="#">ABOUT US</a></li>
+			      		<li><a href="#">CONTACT</a></li>
+			    	</ul>
+			  	</div>
+				<div class="top-bar-right">
+					<ul class="dropdown menu dashboard-a" data-dropdown-menu>
+						<li class="mega-menu"><a data-toggle="mega-menu" href="#" id="user-name">USER NAME</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="album_dashboard">
+				<p id="albumname_dashboard">My Album</p>
+			</div>
+		</div>
+		<a id="add_album_sign" class="button" data-reveal-id="add_album">&#43;</a>
+		<!--<div class="">-->
+		<div class="sub-menu-bar">
+			<ul class="menu">
+				<li><a id="all_sign" href="#" class="is-active">ALL</a></li>
+				<!--<li><a id="ranks_sign" href="#">WITH RANKS</a></li>-->
+				<!--<li><a id="process_sign" href="#">IN PROCESS</a></li>-->
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+<div id="add_album" class="reveal-modal" data-reveal aria-labelledby="Add-Album" aria-hidden="true" role="dialog" >
+	<form action="" id="add_album_form">
+		<label style="color: gray">Give Your Album A Name.</label>
+		<input id="album_name_id" type="text" name="a_name" placeholder="Give your album a name." class="naming" required>
+		<!-- <input type="submit" class="button" value="NEXT"> -->
+		<a class="drag_files button" data-reveal-id="drag_page" id="first-second" type="submit">NEXT</a>
+		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+	</form>
+</div>
+
+
+<div id="drag_page" style="z-index: 102;" class="reveal-modal" data-reveal aria-labelledby="drag-files" aria-hidden="true" role="dialog">
+	<div id="dragging-box">
+		<form id="drag_file_form" action="">
+			<fieldset>
+				<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="3000000" />
+
+				<label for="upload_choose"><img src="img/upload_icon.png" class="upload-icon" /></label>
+				<label id="label-for-drag">Drop images<span id="or"> or</span><label for="upload_choose" id="label-for-choose"> upload images from local path.</label></label>
+				<input type="file" name="gopro_images" id="upload_choose" style="display: none;" multiple="">
+				<!--This is used for testing.-->
+				<p id="message"></p>
+				<a href="#" class="button" data-reveal-id="display_modal" id="second-third" style="display: none;">OK</a>
+
+
+				<!--This is used to close current modal.-->
+				<a href="#" id="first_close" class="close-reveal-modal button" aria-label="Close" style="display: none;"></a>
+			</fieldset>
+		</form>
+	</div>
+	<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+</div>
+
+
+
+
+
+
+
+
+<div id="display_modal" style="z-index: 103;" class="reveal-modal" data-reveal aria-labelledby="display-drags" aria-hidden="true" role="dialog">
+
+	<div class="row background-box">
+		<form>
+			<fieldset>
+				<div class="row">
+					<!--Will add in this part in the next version.-->
+					<!--<div class="small-3 columns" style="display:inline-block;text-align:right;">-->
+						<!--<input id="select" type="checkbox" />-->
+						<!--<label for="select" id="select-all">-->
+							<!--SELECT ALL-->
+							<!--<span id="item_count" style="font-weight: 400;color: #767676;">-->
+								<!--(65 items)-->
+							<!--</span>-->
+						<!--</label>-->
+					<!--</div>-->
+					<!--<div class="small-2 columns" style="float: left;"><i id="delete" style="font-size: 1.2rem;float:left;" class="fi-trash size-24"></i></div>-->
+				</div>
+				<div class="row img-section">
+					<div class="row">
+						<div class="large-9 columns" id="img-section" style="text-align: left;">
+							<!--             Image Example.              -->
+
+							<!--<div class="medium-2 columns drag-img-container" style="float: left;">-->
+								<!--<img src="img/gopro-logo.png" style="top:0;bottom:0;left:0;right: 0;">-->
+								<!--&lt;!&ndash;<input id="select_1" type="checkbox" style="border:1px solid #19A99D; position: absolute;top: 0px;lef">&ndash;&gt;-->
+							<!--</div>-->
+							<!--<div class="medium-2 columns drag-img-container" style="float: left;">-->
+								<!--<img src="img/stanford-logo.png" style="top:0;bottom:0;left:0;right: 0;">-->
+							<!--</div>-->
+						</div>
+					</div>
+
+					<div class="large-3 columns" id="metadata-section">
+						<div class="metadata-data" style="padding-top: 10px;">
+							<label>ALBUM NAME</label>
+							<input type="text" name="album_name_" value="First Dive" readonly />
+							<label>IMAGE NAME</label>
+							<input type="text" name="img_name" value="imgae.png" readonly />
+							<label>IMAGE CREATED DATE</label>
+							<input type="date" name="img_date" readonly />
+							<label>LONGITUDE</label>
+							<input type="number" name="longitude" value="193.234" step="any" readonly />
+							<label>LATITUDE</label>
+							<input type="number" name="latitude" value="1.234" step="any" readonly />
+						</div>
+					</div>
+				</div>
+				<div class="row upload-button-drag">
+					<a class="button button-upload" type="submit" id="upload-button">UPLOAD</a>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<!--This is used to close current modal.-->
+	<a href="#" id="second_close" class="close-reveal-modal button" aria-label="Close" style="display: none;"></a>
+	<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+</div>
+
+
+<div id="album_gallery" class="reveal-modal" data-reveal aria-labelledby="album_gallery" aria-hidden="true" role="dialog" >
+	<form>
+		<section class="photo_show slider">
+			<div>
+				<img class="img-in-album" style="" src="img/GOPR0078_preview.jpg">
+				<span class="img-star">&#x2605;</span>
+			</div>
+			<div>
+				<img class="img-in-album" style="" src="img/GOPR0078_preview.jpg">
+				<span class="img-star">&#x2605;</span>
+			</div>
+			<div>
+				<img class="img-in-album" style="" src="img/GOPR0078_preview.jpg">
+				<span class="img-star">&#x2605;</span>
+			</div>
+		</section>
+		<!--This is used to close current modal.-->
+		<a href="#" id="third_close" class="close-reveal-modal button" aria-label="Close" style="display: none;"></a>
+		<a class="close-reveal-modal button" aria-label="Close">&#215;</a>
+	</form>
+</div>
+
+
+<div class="display-dashboard" style="padding:10% 10% 10% 10%;">
+	<div class="row small-up-2 medium-up-3">
+		<div class="column" >
+			<a data-reveal-id="album_gallery">
+			<div class="card">
+				<img class="img-style-dashboard" src="img/GOPR0078_preview.jpg">
+				<div class="card-section">
+					<p class="album_name_style">ALBUM NAME</p>
+					<p class="album_date_style">date</p>
+				</div>
+			</div>
+			</a>
+		</div>
+	</div>
+</div>
+
+
+<div id="destroy">
+</div>
+
+
+<!--Wil add this line in the future. Do not FORGET.-->
+<!--<script type="text/javascript" src="js/upload_process.js" ></script>-->
+
+
+
+<script type="text/javascript" src="js/vendor/foundation.js"></script>
+<!--<script type="text/javascript" src="js/vendor/foundation.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
+<script src="css/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+	(function () {
+	    var apiURL = "http://coralreefsource.org/api/sessions";
+        $.ajax({
+            'type':'GET',
+            url : apiURL,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': localStorage.getItem("auth_token")
+            },
+            success:function(result){
+                alert(result);
+                console.log(result);
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        });
+
+
+        document.getElementById("add_album_form").addEventListener("change", function() {
+            localStorage.setItem('t_name', $("#album_name_id").val());
+            $('input[name="album_name_"]').val(localStorage.getItem('t_name'));
+            console.log($("#album_name_id").val());
+        });
+
+		var dropzone = document.getElementById("dragging-box");
+
+		dropzone.ondrop = function (e) {
+			e.preventDefault();
+            document.getElementById("dragging-box").style.background = "none";
+            document.getElementById("dragging-box").style.opacity = "1";
+            if (e.dataTransfer.files.length >= 0) {
+//                console.log(emozFullPath);
+                var files = e.target.files || e.dataTransfer.files;
+                var list_files = [];
+                for (var i = 0, f; f = files[i]; i++) {
+                    list_files.push(URL.createObjectURL(f));
+//                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
+//                    var m = document.getElementById("message");
+//                    m.innerHTML = msg + m.innerHTML;
+                }
+                var img_section = document.getElementById("img-section");
+//                img_section.append(document.createElement('div'));
+//                localStorage.setItem("images_upload_list", list_files);
+
+                for (i = 0; i < list_files.length; i++) {
+                    var img = document.createElement('img');
+                    var div_ = document.createElement('div');
+                    img.src = list_files[i];
+                    img.style = "top:0;bottom:0;left:0;right: 0;";
+                    div_.className = "medium-2 columns drag-img-container";
+                    div_.style = "float: left;";
+
+                    div_.append(img);
+                    img_section.append(div_);
+                }
+                document.getElementById("second-third").click();
+			}
+        }
+
+		dropzone.ondragover = function () {
+			document.getElementById("dragging-box").style.background = "#bfbebb";
+            document.getElementById("dragging-box").style.opacity = "0.5";
+			return false;
+        }
+        dropzone.ondragleave = function () {
+            document.getElementById("dragging-box").style.background = "none";
+            document.getElementById("dragging-box").style.opacity = "1";
+			return false;
+        }
+
+
+
+        var selectFiles = document.getElementById("upload_choose");
+		selectFiles.onchange = function (e) {
+            e.preventDefault();
+            if (e.target.files.length >= 0) {
+//				$('#display_modal').foundation('reveal', 'open');
+
+                var files = e.target.files || e.dataTransfer.files;
+                var list_files = [];
+                for (var i = 0, f; f = files[i]; i++) {
+                    list_files.push(URL.createObjectURL(f));
+
+//                    var msg = "<p>File Information: <strong>" + f.name + "</strong> type: <strong>" + f.type + "</strong> size: <strong>" + f.size + "</strong> bytes </p>";
+//                    var m = document.getElementById("message");
+//                    m.innerHTML = msg + m.innerHTML;
+                }
+                var img_section = document.getElementById("img-section");
+//                img_section.append(document.createElement('div'));
+//                localStorage.setItem("images_upload_list", list_files);
+
+				for (i = 0; i < list_files.length; i++) {
+                    var img = document.createElement('img');
+                    var div_ = document.createElement('div');
+                    img.src = list_files[i];
+                    img.style = "top:0;bottom:0;left:0;right: 0;";
+                    div_.className = "medium-2 columns drag-img-container";
+                    div_.style = "float: left;";
+
+                    div_.append(img);
+                    img_section.append(div_);
+				}
+                document.getElementById("second-third").click();
+            }
+        }
+    }());
+</script>
+<!--<script>-->
+    <!--window.onload = function() {-->
+        <!--console.log("great");-->
+        <!--var apiURL = 'api/sessions';-->
+        <!--$.ajax({-->
+            <!--'type':'GET',-->
+            <!--url : apiURL,-->
+            <!--headers: {-->
+                <!--'X-Requested-With': 'XMLHttpRequest',-->
+                <!--'Authorization': localStorage.getItem("auth_token")-->
+            <!--},-->
+            <!--success:function(result){-->
+                <!--alert(result);-->
+                <!--console.log(result);-->
+            <!--},-->
+            <!--error: function (err) {-->
+                <!--console.log(err)-->
+            <!--}-->
+        <!--});-->
+    <!--};-->
+<!--</script>-->
+<script>
+    var upload_btn = document.getElementById("upload-button");
+    upload_btn.onclick = function () {
+        window.location.href = "dashboard.html";
+    }
+</script>
+<script type="text/javascript">
+    $(document).on('ready', function() {
+        $(".photo_show").slick({
+            dots: true,
+            infinite: true,
+            centerMode: true,
+            slidesToShow: 1,
+            slidesToScroll: 3
+        });
+
+    });
+</script>
+</body>
+</html>
